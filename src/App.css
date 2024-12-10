@@ -1,0 +1,97 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+fieldset{
+  border-radius: 10px;
+  border: solid 5px #ccc;
+  padding: 20px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+fieldset * {
+  font-size: 1.01em;
+  color: #333;
+}
+.input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.input-label {
+  top: -10px; /* Levemente acima da borda superior */
+  left: 10px; /* Ajuste horizontal, se necessário */
+  background: white; /* Para evitar sobreposição visual */
+  padding: 0 5px; /* Ajuste para melhor legibilidade */
+  font-size: 12px; /* Tamanho menor para a legenda */
+  color: #555;
+}
+
+.input-field {
+  all: unset;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.input-field:hover{
+  cursor: text;
+}
+.slide-content {
+  display: flex;
+  flex-direction: row;
+}
+.card-content {
+  margin: 3px 3px 0px 0px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  transition: transform 20ms ease ;
+}
+.card-content:hover{
+  cursor: pointer;
+  transform: scale(1.02);
+}
