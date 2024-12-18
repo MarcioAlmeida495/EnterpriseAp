@@ -1,0 +1,28 @@
+.saveButton {
+    all: unset;
+    display: block;
+    margin: 3px 3px 0px 0px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.2);
+    width: 98%;
+    height: 50px;
+    box-sizing: border-box;
+    transition: border-radius 400ms ease, border 3s ease;
+}
+.saveButton:hover{
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.clicked{
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 20px;
+}
+
+.cancelButton {
+    background-color: rgba(255,100,100,0.5);
+}
+.cancelButton:hover{
+    background-color: rgba(255,100,100,0.7);
+}

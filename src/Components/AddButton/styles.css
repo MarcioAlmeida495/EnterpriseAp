@@ -3,18 +3,41 @@
     margin: 3px 3px 0px 0px;
     padding: 10px;
     text-align: center;
-    background-color: #ccc;
-    width: 50px;
+    background: linear-gradient(60deg, #fff, #aaa);
+    background-color: rgba(0,0,0,0.2);
+    min-width: 50px;
+    max-width: 50px;
     height: 50px;
+    display: block;
     box-sizing: border-box;
-    transition: border-radius 1s ease, border 3s ease;
+    transition: border-radius 1s ease;
 }
 .addButton:hover{
-    background-color: rgba(0,0,0,0.4);
+    background: linear-gradient(45deg, #ccc, #888);
+    background-color: rgba(255,255,255,0.9);
     border-radius: 10px;
     cursor: pointer;
 }
 .clicked{
     background-color: rgba(0,0,0,0.4);
     border-radius: 20px;
+    
+}
+.largest {
+    width: 90%;
+}
+
+@keyframes rotateblock {
+    0%{
+        background: linear-gradient(0deg, #ccc, #888);
+    }
+    25%{
+        background: linear-gradient(90deg, #ccc, #888);
+    }
+    50%{
+        background: linear-gradient(180deg, #ccc, #888);
+    }
+    75%{
+        background: linear-gradient(270deg, #ccc, #888);
+    }
 }

@@ -1,0 +1,22 @@
+.divClick {
+    background-color: black;
+}
+.cardEnterprise {
+    margin: 5px;
+    background-color: #ccc;
+    padding: 10px;
+    font-size: 1.10em;
+    background: linear-gradient(45deg, #ddd, #888);
+    background-size: 200%;
+    background-position: left;
+    transition: background-size 300ms ease;
+}
+.cardEnterprise:hover{
+    cursor: pointer;
+    background-size: 100%;
+}
+.cardclicked {
+    border-radius: 10px;
+    background: linear-gradient(45deg, #ddd, #fff);
+
+}

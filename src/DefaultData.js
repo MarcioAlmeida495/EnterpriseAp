@@ -1,8 +1,11 @@
+import { dataFetch } from "./Functions"
+
+
 
 export const enterprise = {
-    $ID: undefined,
-    name : undefined,
-    Avaliacao : undefined,
+    $ID: '',
+    Nome : '',
+    Avaliacao : '',
     Propriedades : [],
 }
 
@@ -14,25 +17,48 @@ export const dataEnterprise = {
 }
 
 export const Propriedade = {
-    $ID : undefined,
-    Nome : undefined,
-    Area: undefined,
+    $ID : '',
+    Nome : '',
+    Area: '',
     Proprietarios : [],
+    $EnterpriseID: '',
 }
 
 export const Proprietario = {
-$ID: undefined,
-Nome: undefined,
-Endereco: {
-    Estado: undefined,
-    Rua: undefined,
-    Numero: undefined,
-},
-Fodaci: undefined,
+    $ID: '',
+    Numero_Da_Torre: '',
+    Nome: '',
+    CPF: '',
+    RG: '',
+    E_Mail: '',
+    
+        Estado: '',
+        Cidade: '',
+        Bairro: '',
+        Rua: '',
+        Numero: '',
+        CEP: '',
+    
+    Profissao: '',
+    Estado_Civil: '',
+    Telefone: '',
+    $PropriedadesID: []
 
 }
 
 export const defaultField = {
     Propriedades : Propriedade,
     Proprietarios : Proprietario, 
+}
+
+export const defaultFunc = async () => {
+    dataFetch('getDefaultField').then(r=>{
+        console.log(r);
+        return r
+    })
+    
+    var data = await dataFetch('getDefaultField');
+
+    console.log(data);
+    return data;
 }

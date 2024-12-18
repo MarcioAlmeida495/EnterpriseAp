@@ -1,0 +1,156 @@
+[
+  {
+    "$ID": "0",
+    "$EnterpriseID": "0",
+    "Nome": "dqwdqwdqwd",
+    "Area": "dqwdqwd",
+    "Proprietarios": [
+      "1",
+      "2",
+      "4",
+      "7",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15"
+    ]
+  },
+  {
+    "$ID": "1",
+    "$EnterpriseID": "0",
+    "Nome": "Marcoo Aurelio",
+    "Area": "dqwdwqe",
+    "Proprietarios": [
+      "2"
+    ]
+  },
+  {
+    "$ID": "2",
+    "$EnterpriseID": "1",
+    "Nome": "ddddd",
+    "Area": "dqwd",
+    "Proprietarios": [
+      "3",
+      "6"
+    ]
+  },
+  {
+    "$ID": "3",
+    "$EnterpriseID": "0",
+    "Nome": "dqwddwd",
+    "Area": "dqwd",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "4",
+    "$EnterpriseID": "0",
+    "Nome": "dqw",
+    "Area": "qwd",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "5",
+    "$EnterpriseID": "2",
+    "Nome": "Marcio Almeidass",
+    "Area": "1124",
+    "Proprietarios": [
+      "5"
+    ]
+  },
+  {
+    "$ID": "6",
+    "$EnterpriseID": "1",
+    "Nome": "EMpr",
+    "Area": "552",
+    "Proprietarios": [
+      "8"
+    ]
+  },
+  {
+    "$ID": "7",
+    "$EnterpriseID": "0",
+    "Nome": "dqwd",
+    "Area": "qwdqwd",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "8",
+    "$EnterpriseID": "0",
+    "Nome": "dqwd",
+    "Area": "qwdqwd",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "9",
+    "$EnterpriseID": "0",
+    "Nome": "dqwd",
+    "Area": "qwdqw",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "10",
+    "$EnterpriseID": "0",
+    "Nome": "dqwdq",
+    "Area": "dqwdqw",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "11",
+    "$EnterpriseID": "0",
+    "Nome": "qwdqwd",
+    "Area": "dqwdqwdwq",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "12",
+    "$EnterpriseID": "0",
+    "Nome": "dqwd",
+    "Area": "qwdqwdqw",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "13",
+    "$EnterpriseID": "0",
+    "Nome": "dqd",
+    "Area": "qwdqw",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "14",
+    "$EnterpriseID": "0",
+    "Nome": "dqwd",
+    "Area": "qwed",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "15",
+    "$EnterpriseID": "0",
+    "Nome": "dqw",
+    "Area": "ed",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "16",
+    "$EnterpriseID": "0",
+    "Nome": "dqwd",
+    "Area": "qwd",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "17",
+    "$EnterpriseID": "0",
+    "Nome": "dqw",
+    "Area": "dqwed",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "18",
+    "$EnterpriseID": "0",
+    "Nome": "",
+    "Area": "dwqe",
+    "Proprietarios": []
+  }
+]

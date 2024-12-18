@@ -1,0 +1,40 @@
+:root{
+    --left-width: 250px;
+}
+
+.myHome {
+    margin: auto;
+    width: 100%;
+}
+
+.divLeft { 
+    margin: 0px;
+    float: left;
+    width: var(--left-width);
+    height: 100vh;
+    overflow: auto;
+}
+.divInMiddle{
+    box-sizing: border-box;
+    float: left;
+    width: calc((100% - var(--left-width))/3);
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    height: 100vh;
+    padding: 10px;
+    border: 2px solid #ccc;
+
+}
+.EpsButtons{
+    height: 75%;
+    display: flex;
+    max-height: 100vh;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+.EpsButtons > * {
+    flex: 0 0 auto; /* Impede que os filhos cresçam ou dividam espaço igualmente */
+}

@@ -1,0 +1,54 @@
+.loading {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1); /* Fundo do spinner */
+    border-top: 5px solid #d4d4d4; /* Cor da parte animada */
+    border-radius: 50%; /* Forma circular */
+    animation: spin 1s linear infinite; /* Animação */
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .checkmark {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Forma circular */
+    background-color: rgba(0,0,0,0); /* Cor de fundo do círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .check {
+    width: 30px;
+    height: 15px;
+    border: 5px solid white;
+    border-width: 0 0 5px 5px;
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+    animation: check-animation 0.5s ease forwards;
+    opacity: 0;
+  }
+  
+  @keyframes check-animation {
+    0% {
+      opacity: 0;
+      transform: scale(0) rotate(-45deg);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1) rotate(-45deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(-45deg);
+    }
+  }
+  
