@@ -18,11 +18,12 @@ const port  = 40;
 const cors = require('cors');
 app.use(cors());
 // console.log("rodando em : " + port);
-app.listen(port, ()=>{console.log('rodando')});
+app.listen(port, ()=>{console.log('rodando na porta ', port)});
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 const bodyParser = require('body-parser');
 const { getOwner, getEnterprise, getProperty, getDefaultField } = require('./DefaultData');
+const path = require('path');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -224,6 +225,62 @@ app.post('/getOwnerByIndex', (req,res)=>{
                 res.json(each)
             }
         })
+    })
+})
+app.get('/getDefaultTerm', (req, res) => {
+    // Caminho para o arquivo .docx
+    const filePath = path.join(__dirname, 'termoNegociacao.docx');
+    
+    // Envia o arquivo para o cliente
+    res.download(filePath, 'termoNegociacao.docx', (err) => {
+        if (err) {
+            console.error("Erro ao enviar o arquivo:", err);
+            res.status(500).send("Erro ao enviar o arquivo.");
+        }
+    });
+});
+app.get('/getTerm', (req, res) => {
+    const filePath = path.join(__dirname, 'termoNegociacaoAtt.docx');
+    
+    // Lê o arquivo como buffer
+    fs.readFile(filePath, (err, data) => {
+        if (err) {
+            return res.status(500).send('Erro ao ler o arquivo');
+        }
+
+        // Define o tipo MIME para o arquivo .docx
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+
+        // Envia o arquivo como resposta
+        res.send(data);
+    });
+});
+app.post('/getAllDataByOwnerID', (req,res)=>{
+    const {body} = req;
+    const {id} = body;
+    console.log(body);
+    fs.readFile(owners, (err, data) => {
+        var resOwner = JSON.parse(data);
+        resOwner.forEach(Owner => {
+            if(Number(Owner['$ID']) === Number(id)){
+                fs.readFile(properties, (err,data) => {
+                    var resProperty = JSON.parse(data);
+                    resProperty.forEach(Property => {
+                        if(Number(Property['$ID']) === Number(Owner['$PropriedadesID'])){
+                            fs.readFile(enterprises, (err,data) => {
+                                var resEnterprise = JSON.parse(data);
+                                resEnterprise.forEach(Enterprise => {
+                                    if(Number(Enterprise['$ID']) === Number(Property['$EnterpriseID'])){
+                                        res.json({Owner, Property, Enterprise})
+                                    }
+                                })
+                            })
+                        }
+                    })
+                })
+            }
+        })
+        // res.json(response);
     })
 })
 app.post('/createOwner', (req,res) => {

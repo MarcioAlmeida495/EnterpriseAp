@@ -10,19 +10,15 @@ export const dataFetch = (URL, init) => new Promise((resolve, reject) => {
       console.log('aquii')
       fetch(URL, init)
           .then(r=>{
-            console.log(r);
             return r.json()
           })
           .then(r=>{
-            console.log('AAAAAAAAAAA');
-            console.log(r);
             resolve(r);
           })
         }else {
           fetch(URL)
               .then(r=>r.json())
               .then(r=> {
-                console.log('bbbbbbbbbbbbb');
                     resolve(r)})
           
         } 

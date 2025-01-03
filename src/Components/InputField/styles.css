@@ -7,7 +7,7 @@
   .input-label {
     top: -10px; /* Levemente acima da borda superior */
     left: 10px; /* Ajuste horizontal, se necessário */
-    padding: 0 5px; /* Ajuste para melhor legibilidade */
+    padding: 0 00px; /* Ajuste para melhor legibilidade */
     font-size: 12px; /* Tamanho menor para a legenda */
     color: #222;
     align-items: center;
@@ -24,7 +24,7 @@
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 95%;
+    width: 100%;
     box-sizing: border-box;
     margin: auto;
     background-color: white;

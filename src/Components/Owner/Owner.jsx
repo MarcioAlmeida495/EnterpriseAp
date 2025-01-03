@@ -6,6 +6,7 @@ import { SaveButton } from "../SaveButton/SaveButton";
 import { Title } from "../Title/Title";
 import { useHomeContext } from "../../Contexts/HomeContext";
 import { DeleteButton } from "../DeleteButton/DeleteButton";
+import { gerarDocumentoENovaAba } from "../../DocXGenerate";
 
 
 
@@ -79,8 +80,40 @@ export const Owner = ({owner, name = 'Proprietario', ownerId = undefined, son = 
             
             resetProperty();
         }}>{`${isNew ? 'Cadastrar Novo' : 'Atualizar Dados'}`}</SaveButton>}
-        {!isNew && <DeleteButton>Excluir Proprietário</DeleteButton>}
+        {!isNew && <>
+            <SaveButton onClick={()=>{
+                dataFetch('getAllDataByOwnerID', formatInit({id: data['$ID']})).then(r=>{
+                    console.log(r);
+                    const OwnerData = r.Owner;
+                    const PropertyData = r.Property;
+                    const Enterprise = r.Enterprise;
 
+                    const dados = {
+                        nomeproprietario: OwnerData.Nome,
+                        cnpj: OwnerData.CPF,
+                        estadocivil: OwnerData.Estado_Civil,
+                        profissao: OwnerData.Profissao,
+                        email: OwnerData.E_Mail,
+                        telefone: OwnerData.Telefone,
+                        enderecocompleto: `${OwnerData.Rua}, ${OwnerData.Numero}, ${OwnerData.Bairro}, ${OwnerData.Cidade}`,
+                        empreendimento: Enterprise.Nome,
+                        propriedade: PropertyData.Nome,
+                        matricula: "12345",
+                        valorIndenizacao: "R$ 50.000,00",
+                        area: PropertyData.Area,
+                        datalimite: "08/07/2024",
+                        numerocontato: "(31) 99999-9999",
+                        emailcontato: "contato@example.com",
+                    };
+
+                    gerarDocumentoENovaAba(dados, 'http://192.168.1.5:40/getTerm');
+                })
+            }}>Imprimir Termo</SaveButton>
+            <DeleteButton>Excluir Proprietário</DeleteButton>
+        </>
+            }
+        
+        
         </div>
     </div>
 }

@@ -1,0 +1,21 @@
+.divPrinter {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 800px;
+    height: 800px;
+    padding: 10px;
+    background-color: #eee;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.divPrinterModal {  
+    display: flex;
+    position: fixed;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    justify-content: center;
+    align-items: center;
+}

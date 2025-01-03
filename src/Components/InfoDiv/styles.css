@@ -5,7 +5,6 @@
     --divs-length: 3;
 }
 .divInRight{
-    position: relative;
     box-sizing: border-box;
     float: left;
     width: calc(((100% - var(--left-width))/var(--divs-length)));

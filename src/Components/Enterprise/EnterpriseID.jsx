@@ -62,7 +62,7 @@ export const EnterpriseID = ({enterprise, openProperty = () => {}, openByIndex =
             else return undefined
         })}
 
-        <SaveButton className="largest"  onClick={()=>{
+        <SaveButton onClick={()=>{
             var values = document.getElementsByClassName(thisClassName);
             values = [...values];
             values = values.map(value => {

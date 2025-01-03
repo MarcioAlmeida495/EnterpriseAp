@@ -10,7 +10,25 @@ import { useHomeContext } from "../../Contexts/HomeContext";
 import { InfoDivFirst } from "../InfoDiv/InfoDivFirst";
 import { EnterpriseID } from "../Enterprise/EnterpriseID";
 import { Title } from "../Title/Title";
-
+import { PrintBy } from "../PrintBySearch";
+import { gerarDocumentoENovaAba } from "../../DocXGenerate";
+const dados = {
+    nomeproprietario: "João Silva",
+    cnpj: "00.000.000/0000-00",
+    estadocivil: "Casado",
+    profissao: "Engenheiro",
+    email: "joao.silva@example.com",
+    telefone: "(31) 99999-9999",
+    enderecocompleto: "Rua Exemplo, 123, Centro, Belo Horizonte, MG",
+    empreendimento: "Linha de Transmissão LT-123",
+    propriedade: "Terreno Rural",
+    matricula: "12345",
+    valorIndenizacao: "R$ 50.000,00",
+    area: "500m²",
+    datalimite: "08/07/2024",
+    numerocontato: "(31) 99999-9999",
+    emailcontato: "contato@example.com",
+};
 
 export const Home = ({children}) => {
     const {reset} = useHomeContext();
@@ -20,6 +38,7 @@ export const Home = ({children}) => {
     const [dataRight, setDataRight] = useState();
     const [dataFirst, setDataFirst] = useState();
     const [filterValues, setFilterValues] = useState('');
+    const [showModal, setShowModal] = useState(false)
     useEffect(()=>{
         console.log(reset);
        
@@ -37,9 +56,16 @@ export const Home = ({children}) => {
         })
     },[counterReset])
 
-    
+    useEffect(()=>{
+        console.log('rerenderizando')
+    })
+
+    useEffect(()=>{
+        // gerarDocumentoENovaAba(dados, 'http://192.168.1.5:40/getTerm');
+    },[])
 
     return <DataProvider value={{setDataMiddle, dataMiddle, setDataRight, dataRight, setDataFirst, dataFirst}}>
+        {showModal && <PrintBy OpenModal={showModal} onClose={()=>{setShowModal(false)}}/>}
     <div className="divLeft">
         <div className="onTop">
             <Title fontSize="1.8em">EPs</Title>
@@ -51,6 +77,9 @@ export const Home = ({children}) => {
                 }, 0);
             }}>Adicionar EP</SaveButton>
         <InputField onChange={(value)=>{setFilterValues(value)}}/>
+        <SaveButton onClick={()=>{
+            setShowModal(true);
+        }}>Comandos</SaveButton>
         </div>
         <div className="EpsButtons">
             {enterprises && enterprises.map((enterprise, index)=>{
