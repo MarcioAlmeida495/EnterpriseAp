@@ -1,7 +1,8 @@
 .Title1{
     color: #333;
     font-size: 1.4em;
-
+    box-sizing: border-box;
+    margin: 0px;
 }
 .Title1:hover{
     cursor: pointer;

@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react"
-import { FieldSetFromData } from "../../CreateObjectFromData";
 import {  enterprise } from "../../DefaultData";
 import './styles.css';
 import { dataFetch } from "../../Functions";
-import { Enterprise } from "../Enterprise/Enterprise";
-import { Property } from "../Property/Property";
-import { Owner } from "../Owner/Owner";
-import { Modal } from "../Modal/Modal";
 import { SaveButton } from "../SaveButton/SaveButton";
 import { DataProvider } from "../../Contexts/AllDataContext";
 import { InfoDivRight } from "../InfoDiv/InfoDivRight";
@@ -14,14 +9,13 @@ import { InputField } from "../InputField/InputField";
 import { useHomeContext } from "../../Contexts/HomeContext";
 import { InfoDivFirst } from "../InfoDiv/InfoDivFirst";
 import { EnterpriseID } from "../Enterprise/EnterpriseID";
+import { Title } from "../Title/Title";
 
-const dataKey = "EPs"
 
 export const Home = ({children}) => {
     const {reset} = useHomeContext();
     const [enterprises, setEnterprises] = useState();
-    const [nextEnterprise, setNextEnterprise] = useState();
-    const [counterReset, setCounterReset] = useState(0);
+    const [counterReset] = useState(0);
     const [dataMiddle, setDataMiddle] = useState();
     const [dataRight, setDataRight] = useState();
     const [dataFirst, setDataFirst] = useState();
@@ -29,9 +23,7 @@ export const Home = ({children}) => {
     useEffect(()=>{
         console.log(reset);
        
-        dataFetch('getNextEnterprise').then(r=>{
-            setNextEnterprise(r.next);
-        })
+        
         dataFetch('getAllEnterprises').then(r=>{
             if(r.data)setEnterprises(r.data);
         })
@@ -49,21 +41,26 @@ export const Home = ({children}) => {
 
     return <DataProvider value={{setDataMiddle, dataMiddle, setDataRight, dataRight, setDataFirst, dataFirst}}>
     <div className="divLeft">
-        <h1>{dataKey}</h1>
-        <SaveButton onClick={()=>{
-                setDataFirst(<></>)
-            setTimeout(() => {
-                setDataFirst(<Enterprise showAll={true} enterprise={enterprise} upId={nextEnterprise}/>)
-            }, 0);
-        }}>Adicionar EP</SaveButton>
+        <div className="onTop">
+            <Title fontSize="1.8em">EPs</Title>
+            <SaveButton onClick={()=>{
+                setDataFirst(<></>);
+                setDataMiddle(<></>);
+                setTimeout(() => {
+                    setDataFirst(<EnterpriseID enterprise={enterprise}/>)
+                }, 0);
+            }}>Adicionar EP</SaveButton>
         <InputField onChange={(value)=>{setFilterValues(value)}}/>
+        </div>
         <div className="EpsButtons">
             {enterprises && enterprises.map((enterprise, index)=>{
                 if(enterprise['Nome'].toUpperCase().includes(filterValues.toUpperCase()) || (Number(enterprise['$ID']))+1 === Number(filterValues)) 
                     // return <Enterprise key={index} enterprise={enterprise}/>
-                    return <SaveButton onClick={()=>{
+                    return <SaveButton key={index} onClick={()=>{
                         setDataFirst(<EnterpriseID openByIndex={enterprise['$ID']}/>)
-                    }}>{`EP: ${index}`}{enterprise['Nome']}</SaveButton>
+                        setDataMiddle(<></>);
+                        setDataRight(<></>)
+                    }}>{`EP ${Number(index) + 1}: ${enterprise['Nome']}`}</SaveButton>
                 return null
             })}
 

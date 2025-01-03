@@ -11,7 +11,6 @@ export const Resets = {
 export const HomeProvider = ({value = '', children}) => {
     const [reset, setReset] = useState({teste: '111'});
     useEffect(()=>{
-        console.log('reset', reset)
     }, [reset])
     return <Context.Provider value={{reset, setReset}} >{children}</Context.Provider>
 }

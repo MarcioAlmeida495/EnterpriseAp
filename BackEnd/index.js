@@ -1,15 +1,15 @@
-const {_, create} = require('lodash');
 const fs = require('fs');
 // Convertendo o objeto JSON para string
 const jsonData = (data) => JSON.stringify(data, null, 2);
 
 // Caminho do arquivo onde o JSON será salvo
-const caminhoArquivo = (nome) => `./${nome}.json`;
 
+const prefixPath = 'C:/Users/marci/Documents'
+const caminhoArquivo = (nome) => `${prefixPath}/${nome}.json`;
 
-const enterprises = `./enterprises.json`;
-const properties = `./properties.json`;
-const owners = `./owners.json`;
+const enterprises = caminhoArquivo('enterprises');
+const properties = caminhoArquivo('properties');
+const owners = caminhoArquivo('owners');
 
 
 const express = require('express');
@@ -22,7 +22,7 @@ app.listen(port, ()=>{console.log('rodando')});
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 const bodyParser = require('body-parser');
-const {  getDefaultObject, getOwner, getEnterprise, getProperty, getDefaultField } = require('./DefaultData');
+const { getOwner, getEnterprise, getProperty, getDefaultField } = require('./DefaultData');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -31,46 +31,36 @@ module.exports = app;
 if(!fs.existsSync(enterprises)){
     fs.writeFile(enterprises, jsonData([]), (err)=>{
     if(err){
-        // console.log('erro ao escrever o arquivo', err);
     }
     else{
-        // console.log('arquivo criado');
     }
 })
 
 }else{
-    // console.log('arquivo ja existe');
 }
 
 if(!fs.existsSync(properties)){
     fs.writeFile(properties, jsonData([]), (err)=>{
     if(err){
-        // console.log('erro ao escrever o arquivo', err);
     }
     else{
-        // console.log('arquivo criado');
     }
 })
 
 }else{
-    // console.log('arquivo ja existe');
 }
 if(!fs.existsSync(owners)){
     fs.writeFile(owners, jsonData([]), (err)=>{
     if(err){
-        // console.log('erro ao escrever o arquivo', err);
     }
     else{
-        // console.log('arquivo criado');
     }
 })
 
 }else{
-    // console.log('arquivo ja existe');
 }
 
 app.get('/teste', (req, res) => {
-    // console.log('requerimento');
     res.json({msg: 'teste'});
 })
 
@@ -79,17 +69,11 @@ app.get('/teste', (req, res) => {
 app.post('/createEnterprise', (req, res) => {
     const {body} = req;
     const {data} = body;
-    const {$ID} = data;
     var newDataFromBody = data;
 
-    // console.log(body)
-    // if(Propriedade) {
-    //     const {proprietario} = Propriedade[0];
-        // console.log(proprietario)
-    // }
+    
 
     fs.readFile(enterprises, (err, data)=>{
-        // console.log(enterprises)
         var newData = JSON.parse(data);
 
         var createNew = true;
@@ -116,12 +100,7 @@ app.post('/createProperty', (req, res) => {
     const {$EnterpriseID} = data;
     var newDataFromBody = data;
 
-    // console.log(body)
-    // if(Propriedade) {
-    //     const {proprietario} = Propriedade[0];
-        // console.log(proprietario)
-    // }
-
+    
     fs.readFile(properties, (err, data)=>{
         
         var newData = JSON.parse(data);
@@ -159,23 +138,22 @@ app.post('/createProperty', (req, res) => {
 
 })
 
-const saveProperty = ({enterprises = './properties.json', data}) => {
-    fs.writeFile(enterprises, jsonData(data), (err) => {
-        if(!err) return {msg: 'Cadastrado com Sucesso!'}
-        else return {msg: 'Falha ao cadastrar.'} 
-    })
-}
+
 
 app.get('/getEnterprise', (req,res)=>{
     res.json(getEnterprise)
 })
 
 app.post('/getEnterpriseById', (req,res) => {
+    console.log('getEnterpriseByID');
+    console.log(req.body);
     fs.readFile(enterprises, (err,data) => {
         const jsonData = JSON.parse(data);
         console.log(jsonData);
         jsonData.forEach(each => {
-            if(each['$ID'] === req.body.id){
+
+            if(String(each['$ID']) === String(req.body.id)){
+                console.log('resposta -- > ', each)
                 res.json(each);
             }
         })
@@ -184,7 +162,6 @@ app.post('/getEnterpriseById', (req,res) => {
 
 app.get('/getAllEnterprises', (req,res)=>{
     fs.readFile(enterprises, (err, data)=>{
-        // console.log('all enterprises',data);
         var object = JSON.parse(data);
         res.json({data: object});
     })
@@ -192,14 +169,12 @@ app.get('/getAllEnterprises', (req,res)=>{
 
 app.get('/getNextEnterprise', (req,res)=>{
     fs.readFile(enterprises, (err, data)=>{
-        // console.log(data);
         var object = JSON.parse(data);
         res.json({next: object.length});
     })
 })
 app.get('/getNextProperty', (req,res)=>{
     fs.readFile(properties, (err, data)=>{
-        // console.log(data);
         var object = JSON.parse(data);
         res.json({next: object.length});
     })
@@ -212,20 +187,15 @@ app.post('/getPropertyByIndex', (req,res)=>{
     
     const {body} = req;
     const {id} = body;
-    // var newDataFromBody = data;
 
-    // console.log(body);
-    // if(Propriedade) {
-    //     const {proprietario} = Propriedade[0];
-        // console.log(proprietario)
-    // }
+    
 
     fs.readFile(properties, (err, data)=>{
-        // console.log(enterprises)
         var newData = JSON.parse(data);
-        // console.log()
+
         newData.forEach(data=>{
-            if(data['$ID'] === id){ 
+            
+            if(Number(data['$ID']) === Number(id)){ 
                 res.json(data)}
         })
         
@@ -235,7 +205,6 @@ app.get('/getOwner', (req, res)=>{
     res.json(getOwner);
 })
 app.get('/getDefaultField', (req,res)=>{
-    // console.log(getDefaultField);
     res.json(getDefaultField)
 })
 
@@ -260,9 +229,7 @@ app.post('/getOwnerByIndex', (req,res)=>{
 app.post('/createOwner', (req,res) => {
     const {$ID} = req.body;
     const {$PropriedadesID} = req.body;
-    console.log($ID);
     const {body} = req;
-    console.log('body-->',body);
     
     fs.readFile(properties, (err,data)=>{
         var obj = JSON.parse(data);
@@ -281,16 +248,12 @@ app.post('/createOwner', (req,res) => {
         var isNewOwner = true;
         obj.forEach((each,index)=>{
             const id = each['$ID'];
-            console.log(`comparando ${id} com ${$ID}`)
 
-            console.log(each)
             if(id === $ID){
-                console.log('entrou')
                 isNewOwner = false;
                 obj[index] = body;
             }
         })
-        console.log(obj)
         if(isNewOwner) obj = [...obj, body];
         fs.writeFile(owners, jsonData(obj), (err)=>{
             

@@ -2,155 +2,127 @@
   {
     "$ID": "0",
     "$EnterpriseID": "0",
-    "Nome": "dqwdqwdqwd",
-    "Area": "dqwdqwd",
-    "Proprietarios": [
-      "1",
-      "2",
-      "4",
-      "7",
-      "9",
-      "10",
-      "11",
-      "12",
-      "13",
-      "14",
-      "15"
-    ]
+    "Nome": "dqw",
+    "Area": "dqwdwq",
+    "Proprietarios": []
   },
   {
     "$ID": "1",
-    "$EnterpriseID": "0",
-    "Nome": "Marcoo Aurelio",
-    "Area": "dqwdwqe",
-    "Proprietarios": [
-      "2"
-    ]
+    "$EnterpriseID": "1",
+    "Nome": "dqwdqwdqw",
+    "Area": "qwdqwdqdw",
+    "Proprietarios": []
   },
   {
     "$ID": "2",
-    "$EnterpriseID": "1",
-    "Nome": "ddddd",
-    "Area": "dqwd",
-    "Proprietarios": [
-      "3",
-      "6"
-    ]
+    "$EnterpriseID": "11",
+    "Nome": "dqw",
+    "Area": "dqwdwq",
+    "Proprietarios": []
   },
   {
     "$ID": "3",
-    "$EnterpriseID": "0",
-    "Nome": "dqwddwd",
+    "$EnterpriseID": "13",
+    "Nome": "dqw",
     "Area": "dqwd",
     "Proprietarios": []
   },
   {
     "$ID": "4",
-    "$EnterpriseID": "0",
-    "Nome": "dqw",
+    "$EnterpriseID": "14",
+    "Nome": "qwd",
     "Area": "qwd",
     "Proprietarios": []
   },
   {
     "$ID": "5",
-    "$EnterpriseID": "2",
-    "Nome": "Marcio Almeidass",
-    "Area": "1124",
-    "Proprietarios": [
-      "5"
-    ]
+    "$EnterpriseID": "15",
+    "Nome": "dq",
+    "Area": "dqd",
+    "Proprietarios": []
   },
   {
     "$ID": "6",
-    "$EnterpriseID": "1",
-    "Nome": "EMpr",
-    "Area": "552",
-    "Proprietarios": [
-      "8"
-    ]
+    "$EnterpriseID": "16",
+    "Nome": "dqwd",
+    "Area": "qwd",
+    "Proprietarios": []
   },
   {
     "$ID": "7",
-    "$EnterpriseID": "0",
+    "$EnterpriseID": "17",
     "Nome": "dqwd",
     "Area": "qwdqwd",
     "Proprietarios": []
   },
   {
     "$ID": "8",
-    "$EnterpriseID": "0",
-    "Nome": "dqwd",
-    "Area": "qwdqwd",
-    "Proprietarios": []
-  },
-  {
-    "$ID": "9",
-    "$EnterpriseID": "0",
-    "Nome": "dqwd",
-    "Area": "qwdqw",
-    "Proprietarios": []
-  },
-  {
-    "$ID": "10",
-    "$EnterpriseID": "0",
-    "Nome": "dqwdq",
+    "$EnterpriseID": "17",
+    "Nome": "dqw",
     "Area": "dqwdqw",
     "Proprietarios": []
   },
   {
+    "$ID": "9",
+    "$EnterpriseID": "18",
+    "Nome": "qwd",
+    "Area": "qwdqwddqw",
+    "Proprietarios": []
+  },
+  {
+    "$ID": "10",
+    "$EnterpriseID": "19",
+    "Nome": "dqwd",
+    "Area": "wwww",
+    "Proprietarios": []
+  },
+  {
     "$ID": "11",
-    "$EnterpriseID": "0",
-    "Nome": "qwdqwd",
-    "Area": "dqwdqwdwq",
+    "$EnterpriseID": "19",
+    "Nome": "e",
+    "Area": "ww",
     "Proprietarios": []
   },
   {
     "$ID": "12",
-    "$EnterpriseID": "0",
-    "Nome": "dqwd",
-    "Area": "qwdqwdqw",
+    "$EnterpriseID": "19",
+    "Nome": "rrrr",
+    "Area": "rwqwe",
     "Proprietarios": []
   },
   {
     "$ID": "13",
-    "$EnterpriseID": "0",
-    "Nome": "dqd",
-    "Area": "qwdqw",
+    "$EnterpriseID": "19",
+    "Nome": "qqwe",
+    "Area": "qweeweee",
     "Proprietarios": []
   },
   {
     "$ID": "14",
-    "$EnterpriseID": "0",
-    "Nome": "dqwd",
-    "Area": "qwed",
+    "$EnterpriseID": "19",
+    "Nome": "rrr",
+    "Area": "tqwewqe",
     "Proprietarios": []
   },
   {
     "$ID": "15",
-    "$EnterpriseID": "0",
-    "Nome": "dqw",
-    "Area": "ed",
+    "$EnterpriseID": "20",
+    "Nome": "dqwe",
+    "Area": "ssad",
     "Proprietarios": []
   },
   {
     "$ID": "16",
-    "$EnterpriseID": "0",
-    "Nome": "dqwd",
-    "Area": "qwd",
+    "$EnterpriseID": "21",
+    "Nome": "ww",
+    "Area": "qwww",
     "Proprietarios": []
   },
   {
     "$ID": "17",
-    "$EnterpriseID": "0",
-    "Nome": "dqw",
-    "Area": "dqwed",
-    "Proprietarios": []
-  },
-  {
-    "$ID": "18",
-    "$EnterpriseID": "0",
-    "Nome": "",
-    "Area": "dwqe",
+    "$EnterpriseID": "22",
+    "Nome": "eeeqww",
+    "Area": "eeeqwwewee",
     "Proprietarios": []
   }
 ]

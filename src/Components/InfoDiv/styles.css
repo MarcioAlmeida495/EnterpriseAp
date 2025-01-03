@@ -1,8 +1,14 @@
+
+:root{
+    --left-width: 250px;
+    --minWidth: 180px;
+    --divs-length: 3;
+}
 .divInRight{
     position: relative;
     box-sizing: border-box;
     float: left;
-    width: calc(((100% - var(--left-width))/3));
+    width: calc(((100% - var(--left-width))/var(--divs-length)));
     display: flex;
     justify-content: center;
     margin: 0px;
@@ -13,7 +19,7 @@
 .divFirst {
     box-sizing: border-box;
     float: left;
-    width: calc(((100% - var(--left-width))/3));
+    width: calc(((100% - var(--left-width))/var(--divs-length)));
     display: flex;
     justify-content: center;
     margin: 0px;
@@ -31,4 +37,16 @@
     align-items: center;
     position: absolute;
     background-color: rgba(0,0,0,0.5);
+}
+.divInMiddle{
+    box-sizing: border-box;
+    float: left;
+    width: calc((100% - var(--left-width))/var(--divs-length));
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    height: 100vh;
+    padding: 10px;
+    border: 2px solid #ccc;
+
 }

@@ -9,6 +9,7 @@
     height: 50px;
     box-sizing: border-box;
     transition: border-radius 400ms ease, border 3s ease;
+    min-width: 180px;
 }
 .saveButton:hover{
     background-color: rgba(0,0,0,0.4);

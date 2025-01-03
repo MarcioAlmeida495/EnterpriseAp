@@ -2,23 +2,21 @@ import { useEffect, useRef, useState } from "react"
 import { InputField } from "../InputField/InputField";
 import { AddButton } from "../AddButton/AddButton";
 import { dataFetch, formatInit } from "../../Functions";
-import { Modal } from "../Modal/Modal";
 import { Property } from "../Property/Property";
 import { Propriedade } from "../../DefaultData";
-import _ from 'lodash';
 import { SaveButton } from "../SaveButton/SaveButton";
 import './styles.css';
 import { useDataProvider } from "../../Contexts/AllDataContext";
 import { DeleteButton } from "../DeleteButton/DeleteButton";
 import { useHomeContext } from "../../Contexts/HomeContext";
 import { Title } from "../Title/Title";
+import { handleGetData } from "../../Handles";
 
-export const EnterpriseID = ({enterprise, openProperty = () => {}, openByIndex = undefined, nameOf = '', showAll = false}) => {
+
+export const EnterpriseID = ({enterprise, openProperty = () => {}, openByIndex = undefined}) => {
     const myFormRef = useRef(null);
     const context = useDataProvider();
-    const {setReset} = useHomeContext();
-    const [counter, setCounter]  = useState(0);
-    const [show, setShow] = useState(showAll);
+    const {setReset, reset} = useHomeContext();
     const [keys, setKeys] = useState([]);
     const [id, setId] = useState();
     const [properties, setProperties] = useState([]);
@@ -27,28 +25,17 @@ export const EnterpriseID = ({enterprise, openProperty = () => {}, openByIndex =
     const [data, setData] = useState(enterprise);
 
     var thisClassName = `form-data-id-enterprise${id}`;
-
     
-    const resetData = () => {
-        console.log('teste');
-        setCounter(counter+1);
-        console.log('counter == > ', counter)
-    }
     
-    useEffect(()=>{
-        showAll && setReset({resetEnterprise: resetData})
-    },[])
+    
 
     useEffect(()=>{
-        id && dataFetch('getEnterpriseById', formatInit({id: id})).then(r=>console.log(r));
-        console.log('counter--> ',counter)
-    },[counter])
+        setReset({resetEnterprise: ()=>{handleGetData(setData, id)}})
+    },[id, setReset])
     
     useEffect(()=>{
         if(openByIndex){
-            dataFetch('getEnterpriseById', formatInit({id: openByIndex})).then(r=>{
-                setData(r);
-            })
+            handleGetData(setData, openByIndex);
         }
         else if(enterprise){
             setData(enterprise);
@@ -68,7 +55,7 @@ export const EnterpriseID = ({enterprise, openProperty = () => {}, openByIndex =
 
 
     if(data)return <div ref={myFormRef} className={`myForm`}>
-        <Title>Enterprise</Title>
+        <Title>EP {Number(id) + 1}: {data['Nome']}</Title>
         <input style={{display: 'none'}} data-fieldname={'$ID'} className={thisClassName} readOnly defaultValue={id} />
         {keys && keys.map((keyValue, index)=>{
             if(!Array.isArray(data[keyValue]) && !keyValue.includes('$')) return <InputField key={index} classForm={thisClassName} upValue={data[keyValue]} keyValue={keyValue}/>
@@ -86,16 +73,25 @@ export const EnterpriseID = ({enterprise, openProperty = () => {}, openByIndex =
             obj = {...obj, Propriedades : properties}
             dataFetch('createEnterprise', formatInit({data: obj})).then(r=>{
                 console.log(r);
+                setDataFirst(<></>);
+                    setDataFirst(<EnterpriseID openByIndex={id}/>)
             })
-        }}>Save</SaveButton>
+            if(isNew){
+                // setDataFirst(<></>);
+                // setTimeout(() => {
+                //     setDataFirst(<EnterpriseID openByIndex={id}/>)
+                // }, 0);
+            }
+        }}>{`${isNew ? 'Cadastrar Novo' : 'Salvar Edições'}`}</SaveButton>
         <div className="slide-content">
 
         {properties && properties.map((property, index)=>{
             return <AddButton key={index} onClick={()=>{
                 setDataMiddle(<></>);
+                console.log(reset);
                 setTimeout(() => {
                     console.log('ID===>>> ',id);
-                    setDataMiddle(<Property name={`Empreendimento ${(Number(id)+1)}: P${(index+1)<10 ? ('0'+(index+1)) : (index+1)}`} openByIndex={property} indexOfEnterprise={id}/>);
+                    setDataMiddle(<Property name={`EP ${(Number(id)+1)}: P${(index+1)<10 ? ('0'+(index+1)) : (index+1)}`} openByIndex={property} indexOfEnterprise={id}/>);
                 }, 0);
                 openProperty('teste');
             }} >{`P${(index+1)<10 ? ('0'+(index+1)) : (index+1)}`}</AddButton>

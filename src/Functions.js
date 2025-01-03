@@ -1,17 +1,31 @@
-const defaultURL = 'http://192.168.0.104:40';
+const defaultURL = 'http://192.168.1.5:40';
 export const getURL = ({prefixURL = defaultURL, sufixURL}) => `${prefixURL}/${sufixURL}`;
 
 export const dataFetch = (URL, init) => new Promise((resolve, reject) => {
-    URL = getURL({sufixURL: URL});
+  console.log('url e init == > ',URL, init);  
+  URL = getURL({sufixURL: URL});
+  console.log(init);  
     
-    init ? 
-        fetch(URL, init)
-            .then(r=>r.json())
-            .then(r=> resolve(r))
-    :
-        fetch(URL)
-            .then(r=>r.json())
-            .then(r=> resolve(r))
+    if(init){
+      console.log('aquii')
+      fetch(URL, init)
+          .then(r=>{
+            console.log(r);
+            return r.json()
+          })
+          .then(r=>{
+            console.log('AAAAAAAAAAA');
+            console.log(r);
+            resolve(r);
+          })
+        }else {
+          fetch(URL)
+              .then(r=>r.json())
+              .then(r=> {
+                console.log('bbbbbbbbbbbbb');
+                    resolve(r)})
+          
+        } 
 })
 export const formatInit = (anyObject = {}) => {
     return {

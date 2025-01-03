@@ -1,5 +1,6 @@
 :root{
     --left-width: 250px;
+    --onTop-height: 190px;
 }
 
 .myHome {
@@ -9,27 +10,16 @@
 
 .divLeft { 
     margin: 0px;
-    float: left;
-    width: var(--left-width);
-    height: 100vh;
-    overflow: auto;
-}
-.divInMiddle{
     box-sizing: border-box;
     float: left;
-    width: calc((100% - var(--left-width))/3);
-    display: flex;
-    justify-content: center;
-    margin: 0px;
-    height: 100vh;
-    padding: 10px;
-    border: 2px solid #ccc;
-
+    width: var(--left-width);
+    height: 98vh;
+    overflow: auto;
 }
+
 .EpsButtons{
-    height: 75%;
     display: flex;
-    max-height: 100vh;
+    height: calc(100% - var(--onTop-height));
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
@@ -37,4 +27,8 @@
 }
 .EpsButtons > * {
     flex: 0 0 auto; /* Impede que os filhos cresçam ou dividam espaço igualmente */
+}
+.onTop{
+    height: var(--onTop-height);
+    box-sizing: border-box;
 }
